@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "slug": "first",
+    "p1": "First paragraphe",
+    "p2": "Second paragraphe"
+  },
+  {
+    "id": 2,
+    "slug": "second",
+    "p1": "First paragraphe",
+    "p2": "Second paragraphe"
+  },
+  {
+    "id": 3,
+    "slug": "third",
+    "p1": "First paragraphe",
+    "p2": "Second paragraphe"
+  }
+]

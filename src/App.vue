@@ -1,31 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <b-navbar>
+      <b-navbar-nav class="m-auto">
+        <b-nav-item :to="{ name: 'Home' }">Accueil</b-nav-item>
+        <b-navbar-brand class="mx-5" href="#">
+          <img src="./assets/brand.svg" alt="brand logo">
+        </b-navbar-brand>
+        <b-nav-item :to="{ name: 'Articles' }">Les Yokai</b-nav-item>
+      </b-navbar-nav>
+    </b-navbar>
     <router-view />
   </div>
 </template>
 
+
 <style lang="scss">
+
+@import './styles/colors';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
+  color: $white;
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  .nav-item {
+    display: flex;
+    align-items: center;
+    .nav-link {
+      color: $white;
     }
   }
 }

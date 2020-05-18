@@ -1,0 +1,13 @@
+@import 'colors';
+
+$theme-colors: (
+  "primary": $black,
+  "secondary": $white,
+  // "success": $green,
+  // "danger": $red,
+  // "warning": $yellow,
+  // "info": $lightBlue,
+);
+
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-vue/src/index.scss";
