@@ -17,11 +17,13 @@ workbox.routing.registerRoute(
 )
 
 workbox.routing.registerRoute(
-  new RegExp('https://fonts.(?:googleapies|gstatic).com/(.*)'),
+  // new RegExp('(http(s?):)([/|.|w|s|-])*.(?:jpg|gif|png)'),
+  // new RegExp('https://i.ibb.co/(.*)'),
+  ({request}) => request.destination === 'image',
   new workbox.strategies.CacheFirst({
-    cacheName: 'googleapis',
+    cacheName: 'images',
     method: 'GET',
-    cacheableResponse: { statuses: [0, 200] },
+    cacheableResponse: { statuse: [0, 200] },
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 30
@@ -32,7 +34,6 @@ workbox.routing.registerRoute(
 
 self.addEventListener('push', event => {
 
-  console.log(event.data.text())
   let pushMsg = event.data.text()
 
   const options = {

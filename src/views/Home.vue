@@ -34,6 +34,7 @@ export default {
   justify-content: center;
   text-align: center;
   margin-top: 5rem;
+  margin-bottom: 5rem;
 
   .red-circle {
     border-radius: 50%;

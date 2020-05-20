@@ -19,7 +19,7 @@
         >
           <b-card-body class="p-1">
             <b-card-title>{{ article.title }}</b-card-title>
-            <b-card-text>{{ article.p1 }}</b-card-text>
+            <b-card-text>{{ shortenParagraph(article.p1) }}</b-card-text>
             <b-button
               class="w-100"
               variant="darker-red"
@@ -34,19 +34,20 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   name: 'Articles',
-  data() {
-    return {
-      articles: []
+  computed: {
+    articles() {
+      return this.$store.getters.articles
     }
   },
-  created() {
-    axios
-      .get('https://raw.githubusercontent.com/Diarit-S/json-test/master/articles.json')
-      .then(res => (this.articles = res.data))
+  methods: {
+    shortenParagraph(paragraph) {
+      let string = paragraph.substring(0, 100)
+      string += '...'
+      return string
+    }
   }
 }
 </script>

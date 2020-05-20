@@ -13,9 +13,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch('getArticles')
+  }
+}
+</script>
 
 <style lang="scss">
-
 @import './styles/colors';
 
 #app {
