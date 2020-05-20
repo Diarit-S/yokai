@@ -24,7 +24,7 @@
               class="w-100"
               variant="darker-red"
               :to="{ name: 'Article', params: { slug: article.slug } }"
-              >DÉCOUVRIR</b-button
+              >DÉCOUVRIRE</b-button
             >
           </b-card-body>
         </b-card>

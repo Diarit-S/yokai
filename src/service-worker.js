@@ -17,8 +17,6 @@ workbox.routing.registerRoute(
 )
 
 workbox.routing.registerRoute(
-  // new RegExp('(http(s?):)([/|.|w|s|-])*.(?:jpg|gif|png)'),
-  // new RegExp('https://i.ibb.co/(.*)'),
   ({request}) => request.destination === 'image',
   new workbox.strategies.CacheFirst({
     cacheName: 'images',

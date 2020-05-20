@@ -1,7 +1,7 @@
 <template>
   <b-container style="max-width: 800px" class="d-flex align-items-center flex-column">
     <div class="title-container">
-      <h1>Bienvnue parmi les Yokai</h1>
+      <h1>Bienvenue parmi les Yokai</h1>
       <div class="red-circle"></div>
     </div>
     <p class="text-center mt-5">
