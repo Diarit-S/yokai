@@ -1,39 +1,50 @@
-// const querystring = require('querystring');
+import { parse } from 'querystring'
 const axios = require('axios')
 const mailChimpAPI = 'b00ed0acc0c16fe38d494edd6d719bd0-us1'
+const mailChimpListID = '20e9588e46'
 
 exports.handler = (event, context, callback) => {
-  // let body = {}
-  // console.log(event)
-  // try {
-  //   body = JSON.parse(event.body)
-  // } catch (e) {
-  //   body = querystring.parse(event.body)
-  // }
+  let body = {}
+  console.log(event)
+  try {
+    body = JSON.parse(event.body)
+  } catch (e) {
+    body = parse(event.body)
+  }
 
-  // if (!body.email) {
-  //   console.log('missing email')
-  //   return callback(null, {
-  //     statusCode: 400,
-  //     body: JSON.stringify({
-  //       error: 'missing email'
-  //     })
-  //   })
-  // }
+  if (!body.email) {
+    console.log('missing email')
+    return callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: 'missing email'
+      })
+    })
+  }
 
-  // if (!mailChimpAPI) {
-  //   console.log('missing mailChimpAPI key')
-  //   return callback(null, {
-  //     statusCode: 400,
-  //     body: JSON.stringify({
-  //       error: 'missing mailChimpAPI key'
-  //     })
-  //   })
-  // }
+  if (!mailChimpAPI) {
+    console.log('missing mailChimpAPI key')
+    return callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: 'missing mailChimpAPI key'
+      })
+    })
+  }
+
+  if (!mailChimpListID) {
+    console.log('missing mailChimpListID key')
+    return callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: 'missing mailChimpListID key'
+      })
+    })
+  }
 
   const data = {
-    email_address: 'aladelidelo@trest.fr',
-    status: 'subscribed',
+    email_address: body.email,
+    status: 'pending',
     merge_fields: {}
   }
 
@@ -44,7 +55,7 @@ exports.handler = (event, context, callback) => {
 
   axios({
     method: 'post',
-    url: `https://us1.api.mailchimp.com/3.0/lists/20e9588e46/members/`, //change region (us19) based on last values of ListId.
+    url: `https://us1.api.mailchimp.com/3.0/lists/${mailChimpListID}/members/`, //change region (us19) based on last values of ListId.
     data: subscriber,
     auth: {
       username: 'apikey', // any value will work
@@ -90,8 +101,4 @@ exports.handler = (event, context, callback) => {
       }
       console.log(error.config)
     })
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: 'Hello World' })
-  }
 }
