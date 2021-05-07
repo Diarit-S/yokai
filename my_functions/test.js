@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
       },
       auth: {
         username: 'anythingreally',
-        password: 'b00ed0acc0c16fe38d494edd6d719bd0-us1'
+        password: '919c7fe399172d71c6c09d7088feddff-us1'
       }
     })
       .then(res => {
