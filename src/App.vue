@@ -4,19 +4,39 @@
       <b-navbar-nav class="m-auto">
         <b-nav-item :to="{ name: 'Home' }">Accueil</b-nav-item>
         <b-navbar-brand class="mx-5" href="#">
-          <img src="./assets/brand.svg" alt="brand logo">
+          <img src="./assets/brand.svg" alt="brand logo" />
         </b-navbar-brand>
         <b-nav-item :to="{ name: 'Articles' }">Les Yokai</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <router-view />
+    <button @click="doAPi">test</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   created() {
     this.$store.dispatch('getArticles')
+  },
+  methods: {
+    async doAPi() {
+      axios.post(
+        'https://us1.api.mailchimp.com/3.0/lists/20e9588e46/members/',
+        {
+          email_address: 'test@hotmail.fr',
+          status: 'subscribed'
+        },
+        {
+          auth: {
+            username: 'anystring',
+            password: 'b00ed0acc0c16fe38d494edd6d719bd0-us1'
+          }
+        }
+      )
+    }
   }
 }
 </script>
