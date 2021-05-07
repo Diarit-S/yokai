@@ -1,4 +1,4 @@
-const querystring = require('querystring');
+const querystring = require('querystring')
 const axios = require('axios')
 const mailChimpAPI = 'b00ed0acc0c16fe38d494edd6d719bd0-us1'
 const mailChimpListID = '20e9588e46'
@@ -53,15 +53,13 @@ exports.handler = (event, context, callback) => {
 
   // Subscribe an email
 
-  axios({
-    method: 'post',
-    url: `https://us1.api.mailchimp.com/3.0/lists/${mailChimpListID}/members/`, //change region (us19) based on last values of ListId.
-    data: subscriber,
-    auth: {
-      username: 'apikey', // any value will work
-      password: mailChimpAPI
-    }
-  })
+  axios
+    .post(`https://us1.api.mailchimp.com/3.0/lists/${mailChimpListID}/members/`, subscriber, {
+      auth: {
+        username: 'apikey', // any value will work
+        password: mailChimpAPI
+      }
+    })
     .then(function(response) {
       console.log(`status:${response.status}`)
       console.log(`data:${response.data}`)
@@ -69,7 +67,7 @@ exports.handler = (event, context, callback) => {
 
       if (response.headers['content-type'] === 'application/x-www-form-urlencoded') {
         // Do redirect for non JS enabled browsers
-        return callback({
+        return callback(null, {
           statusCode: 302,
           headers: {
             Location: '/thanks.html',
@@ -80,7 +78,7 @@ exports.handler = (event, context, callback) => {
       }
 
       // Return data to AJAX request
-      return callback({
+      return callback(null, {
         statusCode: 200,
         body: JSON.stringify({ emailAdded: true })
       })
