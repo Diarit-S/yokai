@@ -1,25 +1,25 @@
-const querystring = require('querystring');
+// const querystring = require('querystring');
 const axios = require('axios')
 const mailChimpAPI = 'b00ed0acc0c16fe38d494edd6d719bd0-us1'
 
 exports.handler = (event, context, callback) => {
-  let body = {}
-  console.log(event)
-  try {
-    body = JSON.parse(event.body)
-  } catch (e) {
-    body = querystring.parse(event.body)
-  }
+  // let body = {}
+  // console.log(event)
+  // try {
+  //   body = JSON.parse(event.body)
+  // } catch (e) {
+  //   body = querystring.parse(event.body)
+  // }
 
-  if (!body.email) {
-    console.log('missing email')
-    return callback(null, {
-      statusCode: 400,
-      body: JSON.stringify({
-        error: 'missing email'
-      })
-    })
-  }
+  // if (!body.email) {
+  //   console.log('missing email')
+  //   return callback(null, {
+  //     statusCode: 400,
+  //     body: JSON.stringify({
+  //       error: 'missing email'
+  //     })
+  //   })
+  // }
 
   if (!mailChimpAPI) {
     console.log('missing mailChimpAPI key')
@@ -32,8 +32,8 @@ exports.handler = (event, context, callback) => {
   }
 
   const data = {
-    email_address: body.email,
-    status: 'pending',
+    email_address: 'aladelidelo@trest.fr',
+    status: 'subscribed',
     merge_fields: {}
   }
 
