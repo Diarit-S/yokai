@@ -10,6 +10,7 @@
       </b-navbar-nav>
     </b-navbar>
     <router-view />
+    <input type="email" v-model="userEmail" />
     <button @click="doA">test</button>
     <!-- <form id="newsletter" class="subscribe" action="/.netlify/functions/test" method="post">
       <input
@@ -30,6 +31,11 @@
 import axios from 'axios'
 
 export default {
+  data() {
+    return {
+      userEmail: ''
+    }
+  },
   created() {
     this.$store.dispatch('getArticles')
   },
@@ -50,7 +56,7 @@ export default {
       )
     },
     doA() {
-      fetch(`/.netlify/functions/test?email=${'autreemail@test.fr'}`, {
+      fetch(`/.netlify/functions/test?email=${this.userEmail}`, {
         method: 'post'
       })
         .then(function(response) {
