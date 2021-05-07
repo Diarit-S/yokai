@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
       },
       auth: {
         username: 'anythingreally',
-        password: '919c7fe399172d71c6c09d7088feddff-us1'
+        password: process.env.MC_API
       }
     })
       .then(res => {
