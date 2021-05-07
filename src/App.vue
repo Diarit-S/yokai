@@ -50,7 +50,7 @@ export default {
       )
     },
     doA() {
-      fetch('/.netlify/functions/form-handler', {
+      fetch('/.netlify/functions/test', {
         method: 'post',
         body: JSON.stringify({
           email: 'test@opo.fr'
