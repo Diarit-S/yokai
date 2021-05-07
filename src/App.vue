@@ -10,7 +10,19 @@
       </b-navbar-nav>
     </b-navbar>
     <router-view />
-    <button @click="doAPi">test</button>
+    <button @click="doA">test</button>
+    <!-- <form id="newsletter" class="subscribe" action="/.netlify/functions/test" method="post">
+      <input
+        type="email"
+        id="inputEmail"
+        name="email"
+        placeholder="Enter email to subscribe for FREE"
+        class="email"
+        required
+        autofocus
+      />
+      <button class="button" type="submit">Subscribe</button> -->
+    <!-- </form> -->
   </div>
 </template>
 
@@ -36,6 +48,20 @@ export default {
           }
         }
       )
+    },
+    doA() {
+      fetch('/.netlify/functions/form-handler', {
+        method: 'post',
+        body: JSON.stringify({
+          email: 'test@opo.fr'
+        })
+      })
+        .then(function(response) {
+          return response.json()
+        })
+        .then(function(data) {
+          console.log('data from function', data)
+        })
     }
   }
 }
