@@ -50,11 +50,8 @@ export default {
       )
     },
     doA() {
-      fetch('/.netlify/functions/test', {
-        method: 'post',
-        body: JSON.stringify({
-          email: 'test@opo.fr'
-        })
+      fetch(`/.netlify/functions/test?email=${'autreemail@test.fr'}`, {
+        method: 'post'
       })
         .then(function(response) {
           return response.json()

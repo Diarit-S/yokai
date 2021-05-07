@@ -1,27 +1,20 @@
 const axios = require('axios')
-// var crypto = require('crypto')
 
 exports.handler = async (event, context) => {
   try {
-    // const email = event.queryStringParameters.email
-    // if (!email) {
-    //   return {
-    //     statusCode: 500,
-    //     body: 'email query paramter required'
-    //   }
-    // }
-
-    // https://gist.github.com/kitek/1579117
-    // let emailhash = crypto
-    //   .createHash('md5')
-    //   .update(email)
-    //   .digest('hex')
+    const email = event.queryStringParameters.email
+    if (!email) {
+      return {
+        statusCode: 500,
+        body: 'email query paramter required'
+      }
+    }
 
     return axios({
       method: 'post',
       url: 'https://us1.api.mailchimp.com/3.0/lists/20e9588e46/members/',
       data: {
-        email_address: 'polipol@polds.fr',
+        email_address: email,
         status: 'subscribed'
       },
       auth: {
