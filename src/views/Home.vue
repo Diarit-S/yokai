@@ -25,7 +25,7 @@ export default {
   name: 'Home',
   components: {},
   methods: {
-    imgSrc() {
+    async imgSrc() {
       console.log('teeest')
       const url = `http://vimeo.com/api/v2/video/594992609.json`
       const testo = await axios.get(url)
