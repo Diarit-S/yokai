@@ -29,7 +29,7 @@ export default {
       console.log('teeest')
       const url = `https://vimeo.com/api/v2/video/594992609.json`
       const testo = await axios.get(url)
-      console.log(testo)
+      console.log(testo.data[0].thumbnail_medium)
     }
   },
   mounted(){
