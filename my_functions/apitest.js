@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
     const apiKey = "7g-eh3IEQwbeKYrZFiNy8sJwRYVpIlVMIV5ZXeJQ1Xo"
     console.log('tesssssst depuis la function')
     return axios({
-      method: 'post',
+      method: 'patch',
       url: url,
       data: {
         build_settings: {env: {TEST_ENV: 'depuislafunction'}},
