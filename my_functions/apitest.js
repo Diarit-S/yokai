@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
     const url = "https://api.netlify.com/api/v1/sites/0f726a40-a5e0-4a73-ae78-a10f3bc2b770"
     
     const apiKey = "7g-eh3IEQwbeKYrZFiNy8sJwRYVpIlVMIV5ZXeJQ1Xo"
-    
+    console.log('tesssssst depuis la function')
     return axios({
       method: 'post',
       url: url,
