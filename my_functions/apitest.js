@@ -3,16 +3,12 @@ const axios = require('axios')
 
 exports.handler = async (event, context) => {
   try {
-    const url = "https://api.netlify.com/api/v1/sites/0f726a40-a5e0-4a73-ae78-a10f3bc2b770"
+    const url = "https://api.netlify.com/api/v1/sites/0f726a40-a5e0-4a73-ae78-a10f3bc2b770/builds"
     
     const apiKey = "7g-eh3IEQwbeKYrZFiNy8sJwRYVpIlVMIV5ZXeJQ1Xo"
-    console.log('tesssssst depuis la function')
     return axios({
-      method: 'patch',
+      method: 'post',
       url: url,
-      data: {
-        build_settings: {env: {TEST_ENV: 'depuislafunction'}},
-      },
       headers: {
         Authorization: `Bearer ${apiKey}`
       }
