@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
       })
       .catch(err => {
         console.log('returning from here', err.response.data.detail)
-        return { statusCode: 500, body: JSON.stringify(err.response.data) }
+        return { statusCode: 500, body: JSON.stringify(err) }
       })
   } catch (err) {
     return { statusCode: 500, body: err.toString() }
